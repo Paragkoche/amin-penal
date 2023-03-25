@@ -67,20 +67,19 @@ export default () => {
                 setLoad(true);
                 e.preventDefault();
                 Login(fromData)
-                  .then(async (e) => {
-                    let es = await e.json();
-                    if (es.status) {
-                      localStorage.setItem("token", es.token);
+                  .then((e) => {
+                    if (e.data.status) {
+                      localStorage.setItem("token", e.data.token);
                       window.location.reload();
                     } else {
                       setError({
                         password:
-                          (es.message as string).indexOf("Password") != -1
-                            ? (es.message as string)
+                          (e.data.message as string).indexOf("Password") != -1
+                            ? (e.data.message as string)
                             : null,
                         email:
-                          (es.message as string).indexOf("Email") != -1
-                            ? (es.message as string)
+                          (e.data.message as string).indexOf("Email") != -1
+                            ? (e.data.message as string)
                             : null,
                       });
                     }

@@ -1,10 +1,7 @@
 import axios from "axios";
 const URL = "https://api.boilerworldexpo.com/api";
 export const Login = async (data: { email: string; password: string }) => {
-  return await fetch(URL + "/api/admin/login", {
-    method: "POST",
-    body: JSON.stringify(data),
-  });
+  return axios.post(URL + "/api/admin/login", data);
 };
 export const getAllVisitor = async (token: string) => {
   return fetch(URL + "/visitor?query=.com&limit=50000", {
