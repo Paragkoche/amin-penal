@@ -22,7 +22,7 @@ function App() {
         setToken(json.token);
         localStorage.setItem("token", json.token);
         console.log(json);
-        setLoading((s) => !s);
+        setLoading((s) => false);
       });
     }
   }, []);

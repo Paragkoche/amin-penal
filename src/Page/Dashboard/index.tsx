@@ -278,73 +278,73 @@ export default ({ token }: { token: string }) => {
                     data: [
                       exhibitor.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 1 &&
+                          new Date(v.createdAt).getMonth() == 1 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       exhibitor.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 2 &&
+                          new Date(v.createdAt).getMonth() == 2 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       exhibitor.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 3 &&
+                          new Date(v.createdAt).getMonth() == 3 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       exhibitor.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 4 &&
+                          new Date(v.createdAt).getMonth() == 4 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       exhibitor.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 5 &&
+                          new Date(v.createdAt).getMonth() == 5 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       exhibitor.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 6 &&
+                          new Date(v.createdAt).getMonth() == 6 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       exhibitor.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 7 &&
+                          new Date(v.createdAt).getMonth() == 7 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       exhibitor.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 8 &&
+                          new Date(v.createdAt).getMonth() == 8 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       exhibitor.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 9 &&
+                          new Date(v.createdAt).getMonth() == 9 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       exhibitor.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 10 &&
+                          new Date(v.createdAt).getMonth() == 10 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       exhibitor.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 11 &&
+                          new Date(v.createdAt).getMonth() == 11 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       exhibitor.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 12 &&
+                          new Date(v.createdAt).getMonth() == 12 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
@@ -356,73 +356,73 @@ export default ({ token }: { token: string }) => {
                     data: [
                       visitors.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 1 &&
+                          new Date(v.createdAt).getMonth() == 1 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       visitors.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 2 &&
+                          new Date(v.createdAt).getMonth() == 2 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       visitors.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 3 &&
+                          new Date(v.createdAt).getMonth() == 3 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       visitors.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 4 &&
+                          new Date(v.createdAt).getMonth() == 4 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       visitors.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 5 &&
+                          new Date(v.createdAt).getMonth() == 5 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       visitors.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 6 &&
+                          new Date(v.createdAt).getMonth() == 6 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       visitors.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 7 &&
+                          new Date(v.createdAt).getMonth() == 7 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       visitors.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 8 &&
+                          new Date(v.createdAt).getMonth() == 8 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       visitors.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 9 &&
+                          new Date(v.createdAt).getMonth() == 9 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       visitors.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 10 &&
+                          new Date(v.createdAt).getMonth() == 10 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       visitors.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 11 &&
+                          new Date(v.createdAt).getMonth() == 11 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
                       visitors.filter(
                         (v: any) =>
-                          new Date(v.createdAt).getMonth() == 12 &&
+                          new Date(v.createdAt).getMonth() == 12 - 1 &&
                           new Date(v.createdAt).getFullYear() ==
                             new Date(Date.now()).getFullYear()
                       ).length,
