@@ -23,3 +23,45 @@ export const getAllExhibitor = async (token: string) => {
     },
   });
 };
+export const refreshToken = async (token: string) => {
+  return fetch(URL + "/api/admin/refreshToken", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Authorization",
+    },
+  });
+};
+
+export const deleteVisitor = async (token: string, id: string) => {
+  return fetch(URL + "/visitor/delete/" + id, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Authorization",
+    },
+  });
+};
+export const deleteExhibitor = async (token: string, id: string) => {
+  return fetch(URL + "/exhibitor/delete/" + id, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Authorization",
+    },
+  });
+};
+
+export const ConformExhibitor = async (token: string, id: string) => {
+  return fetch(URL + "/exhibitor/confirm/exhibitor/" + id, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Authorization",
+    },
+  });
+};

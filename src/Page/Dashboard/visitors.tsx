@@ -29,11 +29,12 @@ import {
 import { getAllExhibitor, getAllVisitor } from "../../Api";
 import React from "react";
 import CircularProgress from "@mui/material/CircularProgress";
+import Dilog from "./Dilog";
 
 export const CustomersTable = () => {
   const [token, setToken] = React.useState(localStorage.getItem("token") || "");
 
-  const [exhibitor, setExhibitor] = React.useState<any[]>([]);
+  const [exhibitor, setExhibitor] = React.useState([]);
   const [loding, setLoading] = React.useState(true);
   const theme = useTheme();
   React.useEffect(() => {
@@ -73,43 +74,22 @@ export const CustomersTable = () => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell padding="checkbox">
-                  <Checkbox
-                    checked={selectedAll}
-                    indeterminate={selectedSome}
-                    onChange={(event) => {
-                      if (event.target.checked) {
-                      } else {
-                      }
-                    }}
-                  />
-                </TableCell>
-
+                <TableCell>Name</TableCell>
                 <TableCell>Email</TableCell>
                 <TableCell>Location</TableCell>
                 <TableCell>Phone</TableCell>
-                <TableCell>Signed Up</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {exhibitor.slice(0, 50).map((customer) => {
+              {exhibitor.slice(0, 50).map((customer: any) => {
                 const isSelected = false;
+                // const [dialog, setDialog] = React.useState(false);
                 // const createdAt = format(customer.createdAt, "dd/MM/yyyy");
 
                 return (
-                  <TableRow hover key={customer.id} selected={isSelected}>
-                    <TableCell padding="checkbox">
-                      <Checkbox checked={isSelected} />
-                    </TableCell>
-
-                    <TableCell>{customer.email}</TableCell>
-                    <TableCell>
-                      {customer.city || ""}, {customer.state},{" "}
-                      {customer.country}
-                    </TableCell>
-                    <TableCell>{customer.mobile_no}</TableCell>
-                    <TableCell>{customer.createdAt}</TableCell>
-                  </TableRow>
+                  <>
+                    <Dilog {...customer} />
+                  </>
                 );
               })}
             </TableBody>

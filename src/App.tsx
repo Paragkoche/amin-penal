@@ -7,11 +7,39 @@ import SideNav from "./components/SideNav";
 import Dashboard from "./Page/Dashboard";
 import CustomersTable from "./Page/Dashboard/exhibitor";
 import CustomersTable2 from "./Page/Dashboard/visitors";
+import React from "react";
+import { refreshToken } from "./Api";
+import Container from "@mui/material/Container";
+import { CircularProgress } from "@mui/material";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || "");
-
-  return (
+  const [loading, setLoading] = useState(false);
+  React.useEffect(() => {
+    if (token !== "") {
+      refreshToken(token).then(async (data) => {
+        let json = await data.json();
+        setToken(json.token);
+        localStorage.setItem("token", json.token);
+        console.log(json);
+        setLoading((s) => !s);
+      });
+    }
+  }, []);
+  return loading ? (
+    <center
+      style={{
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignContent: "center",
+      }}
+    >
+      <CircularProgress
+        style={{ justifyContent: "center", alignContent: "center" }}
+      />
+    </center>
+  ) : (
     <BrowserRouter>
       {token !== "" && token != undefined ? (
         <>

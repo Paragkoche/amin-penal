@@ -29,6 +29,7 @@ import {
 import { getAllExhibitor, getAllVisitor } from "../../Api";
 import React from "react";
 import CircularProgress from "@mui/material/CircularProgress";
+import Dilog2 from "./Dilog.2";
 
 export const CustomersTable = () => {
   const [token, setToken] = React.useState(localStorage.getItem("token") || "");
@@ -73,22 +74,11 @@ export const CustomersTable = () => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell padding="checkbox">
-                  <Checkbox
-                    checked={selectedAll}
-                    indeterminate={selectedSome}
-                    onChange={(event) => {
-                      if (event.target.checked) {
-                      } else {
-                      }
-                    }}
-                  />
-                </TableCell>
-
+                <TableCell padding="checkbox"></TableCell>
+                <TableCell>Name</TableCell>
                 <TableCell>Email</TableCell>
                 <TableCell>Location</TableCell>
                 <TableCell>Phone</TableCell>
-                <TableCell>Signed Up</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -96,21 +86,7 @@ export const CustomersTable = () => {
                 const isSelected = false;
                 // const createdAt = format(customer.createdAt, "dd/MM/yyyy");
 
-                return (
-                  <TableRow hover key={customer.id} selected={isSelected}>
-                    <TableCell padding="checkbox">
-                      <Checkbox checked={isSelected} />
-                    </TableCell>
-
-                    <TableCell>{customer.email}</TableCell>
-                    <TableCell>
-                      {customer.city || ""}, {customer.state},{" "}
-                      {customer.country}
-                    </TableCell>
-                    <TableCell>{customer.mobile_no}</TableCell>
-                    <TableCell>{customer.createdAt}</TableCell>
-                  </TableRow>
-                );
+                return <Dilog2 {...customer} />;
               })}
             </TableBody>
           </Table>
