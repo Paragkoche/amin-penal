@@ -37,16 +37,20 @@ export default (props: any) => {
             <TableCell>Name</TableCell>
             <TableCell>Description</TableCell>
           </TableHead>
-          {Object.keys(props).map((v) => (
-            <TableRow hover key={props["id"]}>
-              <TableCell>{v}</TableCell>
-              <TableCell>{props[v]}</TableCell>
-            </TableRow>
-          ))}
+          {Object.keys(props).map((v: any) =>
+            v != "password" && v != "refresh" ? (
+              <TableRow hover key={props["id"]}>
+                <TableCell>{v}</TableCell>
+                <TableCell>{props[v]}</TableCell>
+              </TableRow>
+            ) : (
+              <></>
+            )
+          )}
         </Table>
 
         <DialogActions>
-          <Button onClick={() => setOpen((s) => !s)}>OK</Button>
+          <Button onClick={() => setOpen((s) => !s)}>Close</Button>
           <Button
             color="error"
             onClick={() => {
@@ -63,7 +67,10 @@ export default (props: any) => {
                     setPop((s) => !s);
                   }
                 )
-                .finally(() => setOpen((s) => !s));
+                .finally(() => {
+                  props.refresh();
+                  setOpen((s) => !s);
+                });
             }}
           >
             Delete
@@ -71,6 +78,7 @@ export default (props: any) => {
         </DialogActions>
       </Dialog>
       <Snackbar
+        onBlur={() => setOpen((s) => !s)}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={pop}
         onClose={() => setPop((a) => !a)}

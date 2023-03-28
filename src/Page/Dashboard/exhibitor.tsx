@@ -34,7 +34,7 @@ import Dilog2 from "./Dilog.2";
 export const CustomersTable = () => {
   const [token, setToken] = React.useState(localStorage.getItem("token") || "");
 
-  const [exhibitor, setExhibitor] = React.useState<any[]>([]);
+  const [exhibitor, setExhibitor] = React.useState<any[]>([{}]);
   const [loding, setLoading] = React.useState(true);
   const theme = useTheme();
   React.useEffect(() => {
@@ -50,6 +50,19 @@ export const CustomersTable = () => {
       )
       .finally(() => setLoading(false));
   }, []);
+  const refreshData = () => {
+    getAllExhibitor(token)
+      .then(
+        async (data) => {
+          let d = await data.json();
+          setExhibitor(d.data.rows);
+        },
+        (e) => {
+          console.log(e);
+        }
+      )
+      .finally(() => setLoading(false));
+  };
   const {
     count = 0,
 
@@ -82,11 +95,11 @@ export const CustomersTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {exhibitor.map((customer) => {
+              {exhibitor.map((customer: any) => {
                 const isSelected = false;
                 // const createdAt = format(customer.createdAt, "dd/MM/yyyy");
 
-                return <Dilog2 {...customer} />;
+                return <Dilog2 {...customer} refresh={refreshData} />;
               })}
             </TableBody>
           </Table>

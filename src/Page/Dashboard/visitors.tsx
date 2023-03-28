@@ -37,6 +37,19 @@ export const CustomersTable = () => {
   const [exhibitor, setExhibitor] = React.useState([]);
   const [loding, setLoading] = React.useState(true);
   const theme = useTheme();
+  const refreshData = () => {
+    getAllExhibitor(token)
+      .then(
+        async (data) => {
+          let d = await data.json();
+          setExhibitor(d.data.rows);
+        },
+        (e) => {
+          console.log(e);
+        }
+      )
+      .finally(() => setLoading(false));
+  };
   React.useEffect(() => {
     getAllVisitor(token)
       .then(
@@ -88,7 +101,7 @@ export const CustomersTable = () => {
 
                 return (
                   <>
-                    <Dilog {...customer} />
+                    <Dilog {...customer} refresh={refreshData} />
                   </>
                 );
               })}

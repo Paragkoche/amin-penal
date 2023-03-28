@@ -65,3 +65,13 @@ export const ConformExhibitor = async (token: string, id: string) => {
     },
   });
 };
+export const disapproveExhibitor = async (token: string, id: string) => {
+  return fetch(URL + "/exhibitor/disapprove/exhibitor/" + id, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Authorization",
+    },
+  });
+};

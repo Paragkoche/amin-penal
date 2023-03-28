@@ -9,7 +9,12 @@ import {
   TableRow,
 } from "@mui/material";
 import React from "react";
-import { ConformExhibitor, deleteExhibitor, deleteVisitor } from "../../Api";
+import {
+  ConformExhibitor,
+  deleteExhibitor,
+  deleteVisitor,
+  disapproveExhibitor,
+} from "../../Api";
 
 export default (props: any) => {
   console.log(props);
@@ -37,37 +42,66 @@ export default (props: any) => {
             <TableCell>Name</TableCell>
             <TableCell>Description</TableCell>
           </TableHead>
-          {Object.keys(props).map((v) => (
-            <TableRow hover key={props["id"]}>
-              <TableCell>{v}</TableCell>
-              <TableCell>{props[v]}</TableCell>
-            </TableRow>
-          ))}
+          {Object.keys(props).map((v: any) =>
+            v != "password" && v != "refresh" ? (
+              <TableRow hover key={props["id"]}>
+                <TableCell>{v}</TableCell>
+                <TableCell>{props[v]}</TableCell>
+              </TableRow>
+            ) : (
+              <></>
+            )
+          )}
         </Table>
 
         <DialogActions>
-          <Button onClick={() => setOpen((s) => !s)}>OK</Button>
+          <Button onClick={() => setOpen((s) => !s)}>Close</Button>
           <Button
             color="warning"
             onClick={() => {
-              ConformExhibitor(
-                localStorage.getItem("token") || "",
-                props.id
-              ).then(
-                async (d) => {
-                  var data = await d.json();
-                  setMessage(data.message);
-                  setPop((s) => !s);
-                },
-                async (d) => {
-                  var data = await d.json();
-                  setMessage(data.message);
-                  setPop((s) => !s);
-                }
-              );
+              ConformExhibitor(localStorage.getItem("token") || "", props.id)
+                .then(
+                  async (d) => {
+                    var data = await d.json();
+                    setMessage(data.message);
+                    setPop((s) => !s);
+                  },
+                  async (d) => {
+                    var data = await d.json();
+                    setMessage(data.message);
+                    setPop((s) => !s);
+                  }
+                )
+                .finally(() => {
+                  props.refresh();
+                });
             }}
           >
             Conform
+          </Button>
+          <Button
+            color="error"
+            onClick={() => {
+              disapproveExhibitor(localStorage.getItem("token") || "", props.id)
+                .then(
+                  async (d) => {
+                    var data = await d.json();
+                    setMessage(data.message);
+                    setPop((s) => !s);
+                  },
+                  async (d) => {
+                    var data = await d.json();
+                    setMessage(data.message);
+                    setPop((s) => !s);
+                  }
+                )
+                .finally(() => {
+                  props.refresh();
+                  setOpen((s) => !s);
+                });
+            }}
+          >
+            Disapprove
           </Button>
           <Button
             color="error"
@@ -85,7 +119,10 @@ export default (props: any) => {
                     setPop((s) => !s);
                   }
                 )
-                .finally(() => setOpen((s) => !s));
+                .finally(() => {
+                  props.refresh();
+                  setOpen((s) => !s);
+                });
             }}
           >
             Delete
@@ -93,6 +130,7 @@ export default (props: any) => {
         </DialogActions>
       </Dialog>
       <Snackbar
+        onBlur={() => setOpen((s) => !s)}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={pop}
         onClose={() => setPop((a) => !a)}
