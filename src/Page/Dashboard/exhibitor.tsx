@@ -81,17 +81,17 @@ export const CustomersTable = () => {
   return loding ? (
     <CircularProgress />
   ) : (
-    <Card style={{ margin: "100px 0 0 20px " }}>
+    <Card>
       <Scrollbar>
         <Box sx={{ minWidth: 800 }}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell padding="checkbox"></TableCell>
                 <TableCell>Name</TableCell>
                 <TableCell>Email</TableCell>
-                <TableCell>Location</TableCell>
+                <TableCell>Company</TableCell>
                 <TableCell>Phone</TableCell>
+                <TableCell>Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

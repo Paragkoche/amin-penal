@@ -81,7 +81,7 @@ export const CustomersTable = () => {
   return loding ? (
     <CircularProgress />
   ) : (
-    <Card style={{ margin: "100px 0 0 20px " }}>
+    <Card>
       <Scrollbar>
         <Box sx={{ minWidth: 800 }}>
           <Table>

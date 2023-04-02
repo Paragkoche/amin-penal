@@ -4,18 +4,19 @@ import AppBar from "@mui/material/AppBar";
 import IconButton from "@mui/material/IconButton";
 import Bars3Icon from "@heroicons/react/24/solid/Bars3Icon";
 import Stack from "@mui/material/Stack";
+
 import ArrowTopRightOnSquareIcon from "@heroicons/react/24/solid/ArrowTopRightOnSquareIcon";
 import MagnifyingGlassIcon from "@heroicons/react/24/solid/MagnifyingGlassIcon";
 import SimpleBar from "simplebar-react";
 import { styled } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 import ChevronUpDownIcon from "@heroicons/react/24/solid/ChevronUpDownIcon";
-import React from "react";
+import React, { Children } from "react";
 import { useLocation } from "react-router-dom";
 import UsersIcon from "@heroicons/react/24/solid/UsersIcon";
-
+import CartIcon from "@heroicons/react/24/solid/ShoppingCartIcon";
 const Scrollbar = styled(SimpleBar)``;
-export default () => {
+export default ({ children }: { children: React.ReactNode }) => {
   const pathname = useLocation();
   const [open, setOpen] = React.useState(false);
 
@@ -47,6 +48,7 @@ export default () => {
           </Stack>
         </AppBar>
       </Box>
+
       <Drawer
         onBlur={() => setOpen((s) => !s)}
         anchor="left"
@@ -144,6 +146,17 @@ export default () => {
                     disabled: false,
                     external: false,
                   },
+                  // {
+                  //   title: "Stall",
+                  //   path: "/Stall",
+                  //   disabled: false,
+                  //   external: false,
+                  //   icon: (
+                  //     <SvgIcon fontSize="small">
+                  //       <CartIcon />
+                  //     </SvgIcon>
+                  //   ),
+                  // },
                 ].map((item) => {
                   const active = item.path
                     ? pathname.pathname === item.path
@@ -229,6 +242,13 @@ export default () => {
           </Box>
         </Scrollbar>
       </Drawer>
+      <Box
+        sx={{
+          pt: "64px",
+        }}
+      >
+        {children}
+      </Box>
     </>
   );
 };

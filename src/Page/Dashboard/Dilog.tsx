@@ -19,7 +19,7 @@ export default (props: any) => {
   return (
     <>
       <TableRow hover key={props.id} onClick={() => setOpen((s) => !s)}>
-        <TableCell>{props.name || ""}</TableCell>
+        <TableCell>{props.company_repName || ""}</TableCell>
         <TableCell>{props.email}</TableCell>
         <TableCell>
           {props.city || ""}, {props.state}, {props.country}

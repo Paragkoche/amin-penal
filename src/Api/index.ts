@@ -75,3 +75,34 @@ export const disapproveExhibitor = async (token: string, id: string) => {
     },
   });
 };
+export const getAllStall = async (token: String) => {
+  return fetch(URL + "/api/stall/?limit=500000000000000", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Authorization",
+    },
+  });
+};
+export const AddStall = async (token: String, data: any) => {
+  return axios.post(URL + "/api/stall/add", data);
+};
+export const getExhibitor = async (token: string, id: string) => {
+  return fetch(URL + "/exhibitor/getOne/" + id, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Authorization",
+    },
+  });
+};
+export const UpdateStall = async (token: string, id: string, data: any) => {
+  return axios.put(URL + "/api/stall/update/" + id, data);
+};
+export const getStallByEx = async (name: string) => {
+  return fetch(URL + "/api/stall/?searchFor=exhibitor&query=" + name, {
+    method: "GET",
+  });
+};

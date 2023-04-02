@@ -11,6 +11,8 @@ import React from "react";
 import { refreshToken } from "./Api";
 import Container from "@mui/material/Container";
 import { CircularProgress } from "@mui/material";
+import Stall from "./Page/Stall";
+import Update from "./Page/Stall/Update";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || "");
@@ -43,15 +45,18 @@ function App() {
     <BrowserRouter>
       {token !== "" && token != undefined ? (
         <>
-          <SideNav />
-          <Routes>
-            <Route
-              path="/"
-              Component={() => <Dashboard token={token} />}
-            ></Route>
-            <Route path="/exhibitors" Component={CustomersTable}></Route>
-            <Route path="/visitors" Component={CustomersTable2}></Route>
-          </Routes>
+          <SideNav>
+            <Routes>
+              <Route
+                path="/"
+                Component={() => <Dashboard token={token} />}
+              ></Route>
+              <Route path="/exhibitors" Component={CustomersTable}></Route>
+              <Route path="/visitors" Component={CustomersTable2}></Route>
+              <Route path="/stall/:id" Component={Stall} />
+              <Route path="/stall/update/:id" Component={Update} />
+            </Routes>
+          </SideNav>
         </>
       ) : (
         <Routes>
